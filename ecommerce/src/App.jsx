@@ -3,6 +3,7 @@ import NavBar from "./NavBar";
 import MainContent from "./CustomerList"
 import CustomerList from "./CustomerList";
 import ShoppingCart from "./SoppingCart";
+import Login from "./Login";
 
 
 
@@ -14,6 +15,7 @@ export default class App extends Component {
     render() {
         return <React.Fragment>
             <NavBar />
+            <Login/>
             {/* <CustomerList/>  */}
             <ShoppingCart />
         </React.Fragment>

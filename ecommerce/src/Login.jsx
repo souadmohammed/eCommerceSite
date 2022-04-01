@@ -8,12 +8,16 @@ export default class Login extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { email: "abs@dd", password: "323" }
+        this.state = { email: "abs@dd", password: "323" ,color:"btn btn-primary"}
+        
+        
     }
+    
     render() {
-
+        
         return (
-            <div className="col-lg-9">
+            
+            <div className="col-lg-9 px-5">
                 <h4 className="m-1 p-2 border-bottom">Login</h4>
 
                 {/* Email starts */}
@@ -24,8 +28,7 @@ export default class Login extends React.Component {
                         className="form-control "
                         value={this.state.email}
                         onChange={(event) => { this.setState({ email: event.target.value }) }} />
-                </div>
-                {/* Email ends */}
+                </div>{/* Email ends */}
 
 
                 {/* password starts */}
@@ -36,20 +39,44 @@ export default class Login extends React.Component {
                         className="form-control"
                         value={this.state.password}
                         onChange={(event) => { this.setState({ password: event.target.value }) }} />
+                </div>{/* password ends */}
+
+                <div className="text-end px-2">
+                    {this.state.massage}
+                    <button className={ this.state.color} onClick={this.onLoginClick}>Login</button>
                 </div>
-                {/* password ends */}
-
-                <div>
-                    <button className="btn btn-primary " onClick={this.onLoginClick}>Login</button>
-
-                </div>
-
-
             </div>)
+
     }// end of render method 
- // Executes when the user clicks on Login
- onLoginClick=()=>{
-     console.log(this.state);
- }
+    // Executes when the user clicks on Login
+    onLoginClick = () => {
+        console.log(this.state);
+
+        if (this.state.email === "admin@eee" && this.state.password === "admin111") {
+            //success
+            this.setState({
+                massage:
+                    <span className="text-success px-3">"Successfully Logged-in"</span>
+                   , color : "btn btn-success"
+            }
+            )
+            
+        } else {
+            //erorr
+            this.setState({
+                massage:
+                    <span className="text-danger px-3">"invalid Logged-in, please try again"</span>
+                    ,color : "btn btn-danger"
+                })
+           
+        }
+    }
+
+    changeColor = () => {
+
+    }
+
+    // == {check the value }
+    // === {check the value and the type}
 
 }
